@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import ArticleList from './ArticleList'
-import articles from '../fixtures'
+import articles from '../fixtures' // нельзя обновлять по ссылке
 import 'bootstrap/dist/css/bootstrap.css'
 
 class App extends Component {
@@ -11,7 +11,6 @@ class App extends Component {
         }
     }
 
-
     render() {
         console.log('RENDERED', this.state);
         return(
@@ -21,7 +20,7 @@ class App extends Component {
                     <button className="btn btn-info" onClick={this.revert}>Revert</button>
                 </div>
 
-                <ArticleList articles = {this.state.reverted ? articles : articles.reverse()}/>
+                <ArticleList articles = {this.state.reverted ? articles.slice().reverse() : articles}/>
             </div>
         )
     }
