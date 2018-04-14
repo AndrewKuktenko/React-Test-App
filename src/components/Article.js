@@ -5,7 +5,6 @@ class Article extends PureComponent {
         super(props)
 
         this.state = {
-            isOpen: props.defaultOpen,
             count: 0
         }
     }
@@ -19,29 +18,29 @@ class Article extends PureComponent {
     }
 
 
-    componentWillReceiveProps(nextProps) {
-        if (this.state.defaultOpen !== nextProps.defaultOpen) {
-            this.setState({
-                isOpen: nextProps.defaultOpen
-            })
-        }
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     if (this.state.defaultOpen !== nextProps.defaultOpen) {
+    //         this.setState({
+    //             isOpen: nextProps.defaultOpen
+    //         })
+    //     }
+    // }
 
     // state = {
     //     isOpen:true
     // }
 
     render() {
-        const {article} = this.props
-        const body = this.state.isOpen && <section className="card-text">{article.text}</section>
+        const {article, isOpen, onButtonClick} = this.props
+        const body = isOpen && <section className="card-text">{article.text}</section>
         return (
             <div className="card mx-auto" style={{width:'50%'}}>
                 <div className="card-header">
                     <h2 onClick={this.incrementCounter}>
                         {article.title}
                         Clicked {this.state.count}
-                        <button onClick={this.handleClick} className="btn btn-primary btn-lg float-right">
-                            {this.state.isOpen ? 'Close' : 'Open'}
+                        <button onClick={onButtonClick} className="btn btn-primary btn-lg float-right">
+                            {isOpen ? 'Close' : 'Open'}
                         </button>
                     </h2>
                 </div>
@@ -53,11 +52,11 @@ class Article extends PureComponent {
         )
     }
 
-    handleClick = () => {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    }
+    // handleClick = () => {
+    //     // this.setState({
+    //     //     isOpen: !this.state.isOpen
+    //     // });
+    // }
 
     incrementCounter = () => {
         this.setState({
