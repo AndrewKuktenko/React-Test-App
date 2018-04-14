@@ -5,7 +5,16 @@ class Article extends Component {
         super(props)
 
         this.state = {
-            isOpen: true
+            isOpen: props.defaultOpen
+        }
+    }
+
+
+    componentWillReceiveProps(nextProps) {
+        if (this.state.defaultOpen !== nextProps.defaultOpen) {
+            this.setState({
+                isOpen: nextProps.defaultOpen
+            })
         }
     }
 

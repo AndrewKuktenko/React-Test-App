@@ -7,8 +7,8 @@ import './style.css'
 
 export default function ArticleList({articles}) {
 
-    let articleElements = articles.map(article =>
-        <li key = {article.id} className="article-list__li"><Article article={article}  /></li>
+    let articleElements = articles.map((article, index) =>
+        <li key = {article.id} className="article-list__li"><Article article={article} defaultOpen={index === 0} /></li>
     );
 
     return (
