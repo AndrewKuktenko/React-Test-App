@@ -13,7 +13,7 @@ class App extends Component {
 
 
     render() {
-
+        console.log('RENDERED', this.state);
         return(
             <div className='container'>
                 <div className="jumbotron">
@@ -27,6 +27,7 @@ class App extends Component {
     }
 
     revert = () => {
+        console.log("CLICKED");
         this.setState({
             reverted: !this.state.reverted
         })
